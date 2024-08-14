@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { MagnifyingGlass } from "./svg/Magnifying";
 import Cart from "./Buttons/Cart";
 import { Favourites } from "./Buttons/Favourites";
