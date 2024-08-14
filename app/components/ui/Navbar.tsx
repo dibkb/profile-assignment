@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { MagnifyingGlass } from "./svg/Magnifying";
+import Cart from "./Buttons/Cart";
+import { Favourites } from "./Buttons/Favourites";
 export const Navbar = () => {
   return (
     <main className="bg-blue-600 h-16">
@@ -10,6 +12,7 @@ export const Navbar = () => {
           alt=""
           width={70}
         />
+        {/* middle */}
         <div className="bg-zinc-100 flex rounded-lg w-96 px-2 py-1 items-center gap-1 h-9">
           <MagnifyingGlass className="size-5" />
           <input
@@ -17,6 +20,11 @@ export const Navbar = () => {
             type="text"
             className="text-zinc-800 flex-grow bg-transparent !outline-none text-sm"
           />
+        </div>
+        {/* right */}
+        <div className="flex gap-1">
+          <Cart />
+          <Favourites />
         </div>
       </div>
     </main>
