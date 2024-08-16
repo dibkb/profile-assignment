@@ -1,6 +1,7 @@
 import { Constants } from "@/constants";
 import { Category } from "@/types/products";
 import { FilterMenu } from "./components/ui/Filter/FilterMenu";
+import { ProductsDisplay } from "./components/ui/ProductsSection/ProductsDisplay";
 
 export default function Home() {
   return (
@@ -12,7 +13,9 @@ export default function Home() {
         <FilterMenu />
       </main>
       {/* right section */}
-      <main className="col-span-6 bg-zinc-50 rounded-lg"></main>
+      <main className="col-span-6 bg-zinc-50 rounded-lg">
+        <ProductsDisplay />
+      </main>
     </section>
   );
 }
