@@ -44,7 +44,10 @@ export const Product = ({
       </div>
       {/* price */}
       <p className="text-xs font-medium">₹{price}</p>
-      <p></p>
+      {/* add to cart */}
+      <button className="text-sm bg-blue-500 hover:bg-blue-600 transition-colors duration-400 rounded-lg py-2 text-white">
+        Add to Cart
+      </button>
     </div>
   );
 };
