@@ -7,7 +7,8 @@ import { Product } from "./Product";
 const popularity = ["Rating", "Price -- High to Low", "Price -- Low to High"];
 export const ProductsDisplay = () => {
   const [selected, setSelected] = useState<string>();
-  const { products } = useStoreContext();
+  const { products, filter } = useStoreContext();
+  console.log(filter);
   return (
     <>
       <div

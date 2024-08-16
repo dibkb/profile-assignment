@@ -1,6 +1,6 @@
 "use client";
 
-import { Product } from "@/types/products";
+import { Filter, Product } from "@/types/products";
 import { products as productsData } from "@/data/products";
 import React, {
   createContext,
@@ -14,6 +14,8 @@ import React, {
 interface StoreContext {
   products: Product[];
   setProducts: Dispatch<SetStateAction<Product[]>>;
+  filter: Filter;
+  setFilter: Dispatch<SetStateAction<Filter>>;
 }
 
 const StoreContext = createContext<StoreContext | undefined>(undefined);
@@ -22,9 +24,13 @@ export const StoreContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [products, setProducts] = useState<Product[]>(productsData);
-
+  const [filter, setFilter] = useState<Filter>({
+    category: [],
+    rating: [],
+    assured: false,
+  });
   return (
-    <StoreContext.Provider value={{ products, setProducts }}>
+    <StoreContext.Provider value={{ products, setProducts, filter, setFilter }}>
       {children}
     </StoreContext.Provider>
   );

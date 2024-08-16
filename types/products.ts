@@ -1,10 +1,10 @@
 enum Category {
-  SmartWatch = "Smart Watch",
-  WashingMachine = "Washing Machine",
-  AirConditioner = "Air Conditioner",
-  Television = "Television",
-  MobilePhone = "Mobile Phone",
-  Book = "Book",
+  "Smart Watch" = "Smart Watch",
+  "Washing Machine" = "Washing Machine",
+  "Air Conditioner" = "Air Conditioner",
+  "Television" = "Television",
+  "Mobile Phone " = "Mobile Phone",
+  "Book" = "Book",
 }
 interface Product {
   id: string;
@@ -15,4 +15,9 @@ interface Product {
   category: Category;
   assured: boolean;
 }
-export { type Product, Category };
+interface Filter {
+  category: string[];
+  rating: 1 | 2 | 3 | 4[];
+  assured: boolean;
+}
+export { type Product, Category, type Filter };

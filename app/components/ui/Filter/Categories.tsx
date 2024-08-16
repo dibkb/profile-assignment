@@ -3,22 +3,23 @@ import React, { useState } from "react";
 import { FilterSubmenu } from "./FilterSubmenu";
 import { Category } from "@/types/products";
 import { Check } from "../svg/Check";
-const categories = ["All", ...Object.values(Category)];
+import { useStoreContext } from "@/app/context/StoreContext";
+const categories = ["All", ...Object.keys(Category)];
 export const Categories = () => {
-  // Using useState to manage selectedCategories
-  const [selectedCategories, setSelectedCategories] = useState<
-    Map<number, string>
-  >(new Map());
+  const { filter, setFilter } = useStoreContext();
 
-  function categoryClickHandler(id: number) {
-    setSelectedCategories((prevSelectedCategories) => {
-      const newSelectedCategories = new Map(prevSelectedCategories);
-      if (newSelectedCategories.has(id)) {
-        newSelectedCategories.delete(id);
+  const isCatSelected = (ele: string) => {
+    return filter.category.includes(ele);
+  };
+  function categoryClickHandler(ele: string) {
+    setFilter((prev) => {
+      if (isCatSelected(ele)) {
+        // remove from cat-filter
+        return { ...prev, category: prev.category.filter((p) => p !== ele) };
       } else {
-        newSelectedCategories.set(id, categories[id]);
+        // add to cat-filter
+        return { ...prev, category: [...prev.category, ele] };
       }
-      return newSelectedCategories;
     });
   }
   return (
@@ -29,16 +30,16 @@ export const Categories = () => {
             <span
               key={ele}
               className="flex items-center gap-2 cursor-pointer "
-              onClick={() => categoryClickHandler(id)}
+              onClick={() => categoryClickHandler(ele)}
             >
               <small
                 className={`h-4 w-4 flex items-center justify-center border rounded-sm ${
-                  selectedCategories.has(id)
+                  isCatSelected(ele)
                     ? "bg-blue-600 border-blue-600"
                     : "hover:bg-blue-600 hover:border-blue-600"
                 }`}
               >
-                {selectedCategories.has(id) && <Check className="text-white" />}
+                {isCatSelected(ele) && <Check className="text-white" />}
               </small>
               <p>{ele}</p>
             </span>

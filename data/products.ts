@@ -29,7 +29,7 @@ const products: Product[] = [
       "https://rukminim2.flixcart.com/image/312/312/xif0q/air-conditioner-new/f/c/m/-original-imagxuychhhw9qgh.jpeg?q=70",
     price: 36000,
     rating: 3.9,
-    category: Category.AirConditioner,
+    category: Category["Air Conditioner"],
     assured: false,
   },
   {
@@ -40,7 +40,7 @@ const products: Product[] = [
       "https://rukminim2.flixcart.com/image/312/312/xif0q/air-conditioner-new/f/i/e/-original-imagnyzqbrtygm8y.jpeg?q=70",
     price: 89200,
     rating: 4.1,
-    category: Category.AirConditioner,
+    category: Category["Air Conditioner"],
     assured: true,
   },
   {
@@ -70,7 +70,7 @@ const products: Product[] = [
       "https://rukminim2.flixcart.com/image/312/312/xif0q/air-conditioner-new/v/3/a/-original-imagmmmcr9q7g4fh.jpeg?q=70",
     price: 82990,
     rating: 4.5,
-    category: Category.AirConditioner,
+    category: Category["Air Conditioner"],
     assured: false,
   },
   {
@@ -91,7 +91,7 @@ const products: Product[] = [
       "https://rukminim2.flixcart.com/image/312/312/xif0q/air-conditioner-new/6/a/j/-original-imahyqgjwwzcyy5c.jpeg?q=70",
     price: 34999,
     rating: 4.1,
-    category: Category.AirConditioner,
+    category: Category["Air Conditioner"],
     assured: true,
   },
   {
