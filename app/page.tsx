@@ -1,6 +1,6 @@
 import { Constants } from "@/constants";
-import { ArrowLeft } from "./components/ui/svg/ArrowLeft";
-import { useState } from "react";
+import { Category } from "@/types/products";
+import { FilterMenu } from "./components/ui/FilterMenu";
 
 export default function Home() {
   return (
@@ -9,12 +9,7 @@ export default function Home() {
     >
       {/* left section */}
       <main className="col-span-2 h-full bg-zinc-50 rounded-lg">
-        <div className="flex items-center gap-2 border-b p-4">
-          <h2 className="text-xl font-medium">Filters</h2>
-        </div>
-        <div className="p-4">
-          <h3 className="uppercase text-xs font-medium">Categories</h3>
-        </div>
+        <FilterMenu />
       </main>
       {/* right section */}
       <main className="col-span-6 bg-zinc-50 rounded-lg"></main>
