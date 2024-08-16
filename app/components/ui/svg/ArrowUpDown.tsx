@@ -1,6 +1,7 @@
+import { SvgProps } from "@/types/svg";
 import React from "react";
 
-export const ArrowUpDown = () => {
+export const ArrowUpDown = (props: SvgProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,6 +10,7 @@ export const ArrowUpDown = () => {
       strokeWidth={1.5}
       stroke="currentColor"
       className="size-5"
+      {...props}
     >
       <path
         strokeLinecap="round"
