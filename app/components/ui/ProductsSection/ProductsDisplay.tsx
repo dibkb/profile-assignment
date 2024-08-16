@@ -5,14 +5,13 @@ import React, { useState } from "react";
 import { Product } from "./Product";
 
 const popularity = ["Rating", "Price -- High to Low", "Price -- Low to High"];
+const style = `flex items-center gap-2 border-b h-[${Constants.SidebarHeading}px] px-4 text-xs font-medium`;
 export const ProductsDisplay = () => {
   const [selected, setSelected] = useState<string>();
   const { products } = useStoreContext();
   return (
     <>
-      <div
-        className={`flex items-center gap-2 border-b h-[${Constants.SidebarHeading}px] px-4 text-xs font-medium`}
-      >
+      <div className={style}>
         <p>Sort by</p>
         {popularity.map((ele) => (
           <p

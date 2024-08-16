@@ -5,12 +5,11 @@ import { CustomerRating } from "./CustomerRating";
 import { FlipkartAssured } from "./FlipkartAssured";
 import { Constants } from "@/constants";
 
+const style = `flex items-center gap-2 border-b h-[${Constants.SidebarHeading}px] px-4`;
 export const FilterMenu = () => {
   return (
     <>
-      <div
-        className={`flex items-center gap-2 border-b h-[${Constants.SidebarHeading}px] px-4`}
-      >
+      <div className={style}>
         <h2 className="text-xl font-medium">Filters</h2>
       </div>
       {/* Categories */}
