@@ -22,6 +22,28 @@ const products: Product[] = [
     assured: false,
   },
   {
+    id: "ca3ba7b1-3497-4ab5-bc5e-1407d06395bf",
+    title:
+      "LG OLED B2 164 cm (65 inch) OLED Ultra HD (4K) Smart WebOS TV Alpha77 Gen5 AI Processor, AI Picture",
+    image:
+      "https://rukminim2.flixcart.com/image/612/612/xif0q/television/2/t/n/-original-imah2txtbv7xzmph.jpeg?q=70",
+    price: 169999,
+    rating: 3.6,
+    category: Category.Television,
+    assured: false,
+  },
+  {
+    id: "07b4fb19-af1d-4e60-81b3-44bf1e61313a",
+    title:
+      "TCL S5500 79.97 cm (32 inch) Full HD LED Smart Google TV 2024 Edition with 1.5 GB RAM + 16 GB ROM",
+    image:
+      "https://rukminim2.flixcart.com/image/612/612/xif0q/television/s/u/h/-original-imahfbgs8dwkz9yt.jpeg?q=70",
+    price: 12999,
+    rating: 4.1,
+    category: Category.Television,
+    assured: true,
+  },
+  {
     id: "9e148a7f-1b6c-45e6-bd32-2b903bf41502",
     title:
       "LG AI Convertible 6-in-1 Cooling 2024 Model 1.5 Ton 3 Star Split Dual Inverter HD Filter",
@@ -44,6 +66,16 @@ const products: Product[] = [
     assured: true,
   },
   {
+    id: "050929b2-2436-497a-8ba9-617d00b4568a",
+    title: "Apple iPhone 15 (Black, 128 GB)",
+    image:
+      "https://rukminim2.flixcart.com/image/612/612/xif0q/mobile/h/d/9/-original-imagtc2qzgnnuhxh.jpeg?q=70",
+    price: 70200,
+    rating: 4.6,
+    category: Category["Mobile Phone"],
+    assured: true,
+  },
+  {
     id: "56566f43-a4b1-4ebf-a619-11ae59465aed",
     title: "The Time Machine",
     image:
@@ -54,7 +86,47 @@ const products: Product[] = [
     assured: true,
   },
   {
+    id: "c2353a32-6062-4d5f-892c-cd275c7e9679",
+    title: "SAMSUNG Galaxy S23 5G (Cream, 128 GB)",
+    image:
+      "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/x/7/n/-original-imagzm8qzhpuwrak.jpeg?q=70",
+    price: 44999,
+    rating: 4.5,
+    category: Category["Mobile Phone"],
+    assured: true,
+  },
+  {
+    id: "a83b0b78-6138-4f8d-92cf-28513dc6bb60",
+    title: "REDMI 13C (Starfrost White, 128 GB)",
+    image:
+      "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/t/f/a/-original-imahfk4xp4xcggyt.jpeg?q=70",
+    price: 7699,
+    rating: 4.3,
+    category: Category["Mobile Phone"],
+    assured: false,
+  },
+  {
+    id: "08016234-4409-4428-9659-7d95fbd3c04c",
+    title: "Apple Watch Series 9",
+    image:
+      "https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/5/f/u/-original-imagte4savzhddcs.jpeg?q=70",
+    price: 39993,
+    rating: 4.7,
+    category: Category["Smart Watch"],
+    assured: true,
+  },
+  {
     id: "b6eabd1d-b87f-4f8a-911d-05455751e40a",
+    title: "vivo T3x 5G (Crimson Bliss, 128 GB)",
+    image:
+      "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/w/3/4/-original-imahyytukhkky5ew.jpeg?q=70",
+    price: 13499,
+    rating: 3.7,
+    category: Category["Mobile Phone"],
+    assured: false,
+  },
+  {
+    id: "d37827f7-8256-478e-8949-c63e331e31be",
     title: "Metamorphosis",
     image:
       "https://rukminim2.flixcart.com/image/612/612/xif0q/book/m/n/z/metamorphosis-original-imagw5kdg7hzyykm.jpeg?q=70",
@@ -69,7 +141,7 @@ const products: Product[] = [
     image:
       "https://rukminim2.flixcart.com/image/312/312/xif0q/air-conditioner-new/v/3/a/-original-imagmmmcr9q7g4fh.jpeg?q=70",
     price: 82990,
-    rating: 4.5,
+    rating: 3.5,
     category: Category["Air Conditioner"],
     assured: false,
   },
@@ -84,6 +156,38 @@ const products: Product[] = [
     assured: true,
   },
   {
+    id: "5c009974-970d-4437-9be6-d13f3bce2081",
+    title:
+      "SAMSUNG 12 kg with Wi-Fi Enabled Fully Automatic Front Load Washing Machine with In-built Heater Black",
+    image:
+      "https://rukminim2.flixcart.com/image/612/612/xif0q/washing-machine-new/f/s/a/12-650-wd12tp44dsb-tl-5-0-0094-600-82-samsung-850-original-imagqkr9kuwz5htj.jpeg?q=70",
+    price: 109000,
+    rating: 4.9,
+    category: Category["Washing Machine"],
+    assured: false,
+  },
+  {
+    id: "df103a9f-434b-434a-a430-784da80eae0b",
+    title:
+      "LG 13/10 Kg Washer with Dryer AI Direct Drive &amp; DUAL Inverter Heat Pump, Fully Automatic Front-Loading",
+    image:
+      "https://rukminim2.flixcart.com/image/312/312/xif0q/washing-machine-new/w/w/n/-original-imagxgnyjq6zqbhh.jpeg?q=70",
+    price: 219910,
+    rating: 3.5,
+    category: Category["Washing Machine"],
+    assured: false,
+  },
+  {
+    id: "6012c74d-e46f-4e3e-aac5-693485bbea02",
+    title: "realme Watch S2",
+    image:
+      "https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/o/c/6/-original-imah35ypxjs3c8yb.jpeg?q=70",
+    price: 5299,
+    rating: 2.7,
+    category: Category["Smart Watch"],
+    assured: false,
+  },
+  {
     id: "592c4f91-1997-4a7b-8000-1afe0ca93f06",
     title:
       "SAMSUNG Convertible 5-in-1 Cooling 2024 Model 1.5 Ton 3 Star Split Inverter AC  - White",
@@ -92,6 +196,27 @@ const products: Product[] = [
     price: 34999,
     rating: 4.1,
     category: Category["Air Conditioner"],
+    assured: true,
+  },
+  {
+    id: "6b7b2638-2de6-4959-8e04-e89a6e70bcfe",
+    title:
+      "SAMSUNG 11 kg Fully Automatic Front Load Washing Machine with In-built Heater Black",
+    image:
+      "https://rukminim2.flixcart.com/image/612/612/ktq4l8w0/washing-machine-new/k/w/d/10-58-8-bosch10-kg-inverter-fully-automatic-front-loading-original-imag7yerznvxthu4.jpeg?q=70",
+    price: 57999,
+    rating: 4.1,
+    category: Category["Washing Machine"],
+    assured: true,
+  },
+  {
+    id: "fcd26d93-1e88-4c60-8373-a4586db3754c",
+    title: "SAMSUNG Galaxy Watch Ultra LTE",
+    image:
+      "https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/p/1/s/-original-imah2nhhpy6n5ggz.jpeg?q=70",
+    price: 59999,
+    rating: 4.1,
+    category: Category["Smart Watch"],
     assured: true,
   },
   {
@@ -104,6 +229,38 @@ const products: Product[] = [
     category: Category.Book,
     assured: false,
   },
+  {
+    id: "754ae001-037b-4486-97cd-590efa1e9801",
+    title:
+      "LG 8 kg 5 Star with Smart Inverter Technology, TurboDrum and Smart Diagnosis Fully Automatic Top Load",
+    image:
+      "https://rukminim2.flixcart.com/image/612/612/xif0q/washing-machine-new/2/b/h/-original-imagx7qh8qzppe3s.jpeg?q=70",
+    price: 19999,
+    rating: 4.7,
+    category: Category["Washing Machine"],
+    assured: true,
+  },
+  {
+    id: "5f715e21-4d29-439f-a218-f7508ab1feec",
+    title: "Fastrack Revoltt FS1|1.83 Display|BT Calling",
+    image:
+      "https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/j/h/7/-original-imagvpakfvggsgg5.jpeg?q=70",
+    price: 1199,
+    rating: 3.8,
+    category: Category["Smart Watch"],
+    assured: false,
+  },
+  {
+    id: "0a97e8ed-c78a-449d-b7d9-89250b2a3b91",
+    title: "Noise Colorfit Icon 2 1.8'' Display with Bluetooth Call",
+    image:
+      "https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/e/w/m/-original-imagxp8utmyyysut.jpeg?q=70",
+    price: 1399,
+    rating: 4.1,
+    category: Category["Smart Watch"],
+    assured: true,
+  },
+
   {
     id: "c0171ddd-f5de-4c77-835a-18cfaa9d5ef6",
     title: "Cloud Atlas",

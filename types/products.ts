@@ -3,7 +3,7 @@ enum Category {
   "Washing Machine" = "Washing Machine",
   "Air Conditioner" = "Air Conditioner",
   "Television" = "Television",
-  "Mobile Phone " = "Mobile Phone",
+  "Mobile Phone" = "Mobile Phone",
   "Book" = "Book",
 }
 interface Product {
