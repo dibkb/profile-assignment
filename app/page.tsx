@@ -9,11 +9,11 @@ export default function Home() {
       className={`bg-zinc-200 h-[calc(100vh-${Constants.NavbarHeight}px)] p-2 grid grid-cols-8 gap-2`}
     >
       {/* left section */}
-      <main className="col-span-2 h-full bg-zinc-50 rounded-lg">
+      <main className="col-span-2 h-full bg-zinc-50 rounded-lg overflow-hidden">
         <FilterMenu />
       </main>
       {/* right section */}
-      <main className="col-span-6 bg-zinc-50 rounded-lg">
+      <main className="col-span-6 bg-zinc-50 rounded-lg overflow-y-auto">
         <ProductsDisplay />
       </main>
     </section>

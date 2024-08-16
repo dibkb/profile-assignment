@@ -1,10 +1,13 @@
 "use client";
+import { useStoreContext } from "@/app/context/StoreContext";
 import { Constants } from "@/constants";
 import React, { useState } from "react";
+import { Product } from "./Product";
 
 const popularity = ["Rating", "Price -- High to Low", "Price -- Low to High"];
 export const ProductsDisplay = () => {
   const [selected, setSelected] = useState<string>();
+  const { products } = useStoreContext();
   return (
     <>
       <div
@@ -22,6 +25,11 @@ export const ProductsDisplay = () => {
             {ele}
           </p>
         ))}
+      </div>
+      <div className="grid grid-cols-4 gap-2 p-2">
+        {products.map((prod) => {
+          return <Product key={prod.id} {...prod} />;
+        })}
       </div>
     </>
   );

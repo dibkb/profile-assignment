@@ -1,5 +1,7 @@
 "use client";
 
+import { Product } from "@/types/products";
+import { products as productsData } from "@/data/products";
 import React, {
   createContext,
   useContext,
@@ -10,8 +12,8 @@ import React, {
 } from "react";
 
 interface StoreContext {
-  value: string;
-  setValue: Dispatch<SetStateAction<string>>;
+  products: Product[];
+  setProducts: Dispatch<SetStateAction<Product[]>>;
 }
 
 const StoreContext = createContext<StoreContext | undefined>(undefined);
@@ -19,10 +21,10 @@ const StoreContext = createContext<StoreContext | undefined>(undefined);
 export const StoreContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [value, setValue] = useState<string>("");
+  const [products, setProducts] = useState<Product[]>(productsData);
 
   return (
-    <StoreContext.Provider value={{ value, setValue }}>
+    <StoreContext.Provider value={{ products, setProducts }}>
       {children}
     </StoreContext.Provider>
   );
@@ -31,7 +33,9 @@ export const StoreContextProvider: React.FC<{ children: ReactNode }> = ({
 export const useStoreContext = (): StoreContext => {
   const context = useContext(StoreContext);
   if (!context) {
-    throw new Error("useMyContext must be used within a StoreContextProvider");
+    throw new Error(
+      "useStoreContext must be used within a StoreContextProvider"
+    );
   }
   return context;
 };
