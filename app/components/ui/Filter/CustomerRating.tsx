@@ -2,22 +2,25 @@ import React, { useState } from "react";
 import { FilterSubmenu } from "./FilterSubmenu";
 import { Check } from "../svg/Check";
 import { Star } from "../svg/Star";
+import { useStoreContext } from "@/app/context/StoreContext";
 
 const stars = [1, 2, 3, 4];
 
 export const CustomerRating = () => {
-  // Use useState to manage the selected stars
-  const [selectedStars, setSelectedStars] = useState<Set<number>>(new Set());
+  const { filter, setFilter } = useStoreContext();
 
+  const isRatingSelected = (ele: number) => {
+    return filter.rating.includes(ele);
+  };
   function categoryClickHandler(ele: number) {
-    setSelectedStars((prevSelectedStars) => {
-      const newSelectedStars = new Set(prevSelectedStars);
-      if (newSelectedStars.has(ele)) {
-        newSelectedStars.delete(ele);
+    setFilter((prev) => {
+      if (isRatingSelected(ele)) {
+        //   remove rating to filer
+        return { ...prev, rating: prev.rating.filter((r) => r !== ele) };
       } else {
-        newSelectedStars.add(ele);
+        //   add rating from filter
+        return { ...prev, rating: [...prev.rating, ele] };
       }
-      return newSelectedStars;
     });
   }
 
@@ -32,12 +35,12 @@ export const CustomerRating = () => {
           >
             <small
               className={`col-span-2 h-4 w-4 flex items-center justify-center border rounded-sm ${
-                selectedStars.has(ele)
+                isRatingSelected(ele)
                   ? "bg-blue-600 border-blue-600"
                   : "hover:bg-blue-600 hover:border-blue-600"
               }`}
             >
-              {selectedStars.has(ele) && <Check className="text-white" />}
+              {isRatingSelected(ele) && <Check className="text-white" />}
             </small>
             <p className="col-span-1 flex items-center gap-[1px]">{ele}</p>
             <Star

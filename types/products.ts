@@ -17,7 +17,7 @@ interface Product {
 }
 interface Filter {
   category: string[];
-  rating: 1 | 2 | 3 | 4[];
+  rating: number[];
   assured: boolean;
 }
 export { type Product, Category, type Filter };
