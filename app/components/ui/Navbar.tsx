@@ -26,7 +26,7 @@ export const Navbar = () => {
           />
         </div>
         {/* right */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 items-center">
           <ButtonContainer Svg={<CartICon />} number={4} title="Cart" />
           <ButtonContainer
             Svg={<Heart className="size-6" />}

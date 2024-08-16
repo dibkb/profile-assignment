@@ -25,12 +25,12 @@ export const FilterSubmenu: React.FC<FilterSubmenuProps> = ({
 
   return (
     <div className="p-4 border-b">
-      <span className="flex items-center justify-between">
-        <h3 className="uppercase text-xs font-medium">{title}</h3>
-        <button
-          className="flex hover:bg-zinc-200 p-1 rounded-full transition-colors duration-200"
-          onClick={() => setIsOpen((prev) => !prev)}
-        >
+      <span
+        className="flex items-center justify-between cursor-pointer"
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        <h3 className="uppercase text-xs font-medium select-none">{title}</h3>
+        <button className="flex hover:bg-zinc-200 p-1 rounded-full transition-colors duration-200">
           {isOpen ? (
             <ChevronUp className="size-4" />
           ) : (

@@ -1,9 +1,9 @@
 enum Category {
-  SmartWatch = "SmartWatch",
-  WashingMachine = "WashingMachine",
-  AirConditioner = "AirConditioner",
+  SmartWatch = "Smart Watch",
+  WashingMachine = "Washing Machine",
+  AirConditioner = "Air Conditioner",
   Television = "Television",
-  MobilePhone = "MobilePhone",
+  MobilePhone = "Mobile Phone",
   Book = "Book",
 }
 interface Product {

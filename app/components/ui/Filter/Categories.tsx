@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FilterSubmenu } from "./FilterSubmenu";
 import { Category } from "@/types/products";
 import { Check } from "../svg/Check";
-const categories = ["All", ...Object.keys(Category)];
+const categories = ["All", ...Object.values(Category)];
 export const Categories = () => {
   // Using useState to manage selectedCategories
   const [selectedCategories, setSelectedCategories] = useState<
