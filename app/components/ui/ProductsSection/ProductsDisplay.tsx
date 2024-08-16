@@ -1,6 +1,5 @@
 "use client";
 import { useStoreContext } from "@/app/context/StoreContext";
-import { Constants } from "@/constants";
 import React, { useState } from "react";
 import { Product } from "./Product";
 import { ArrowUpDown } from "../svg/ArrowUpDown";
@@ -39,9 +38,7 @@ export const ProductsDisplay = () => {
   const butonStyle = `flex gap-2 items-center border px-4 py-1 rounded-md group hover:bg-blue-600 hover:text-white hover:border-white`;
   return (
     <>
-      <div
-        className={`border-b h-[${Constants.SidebarHeading}px] text-xs font-medium`}
-      >
+      <div className={`border-b h-[64px] text-xs font-medium`}>
         {/* smaller screens */}
         <div className="flex h-full items-center gap-2 px-2 md:hidden relative">
           <button
@@ -65,7 +62,7 @@ export const ProductsDisplay = () => {
             </div>
           )}
           {showModal === "filter" && (
-            <div className="absolute bottom-0 w-[90vw] left-0 transform translate-y-full bg-white shadow-light-900 p-2 rounded-lg z-[100]">
+            <div className="absolute bottom-0 w-[99vw] left-0 transform translate-y-full bg-white shadow-light-900 p-2 rounded-lg z-[100]">
               <FilterMenu />
             </div>
           )}

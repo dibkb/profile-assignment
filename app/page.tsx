@@ -1,12 +1,10 @@
-import { Constants } from "@/constants";
-import { Category } from "@/types/products";
 import { FilterMenu } from "./components/ui/Filter/FilterMenu";
 import { ProductsDisplay } from "./components/ui/ProductsSection/ProductsDisplay";
 
 export default function Home() {
   return (
     <section
-      className={`bg-zinc-200 h-[calc(100vh-${Constants.NavbarHeight}px)] p-2 grid grid-cols-8 gap-2`}
+      className={`bg-zinc-200 h-[calc(100vh-64px)] p-2 grid grid-cols-8 gap-2`}
     >
       {/* left section */}
       <main className="hidden md:block md:col-span-2 h-full bg-zinc-50 rounded-lg overflow-hidden">
