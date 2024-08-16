@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { MagnifyingGlass } from "./svg/Magnifying";
-import Cart from "./Buttons/Cart";
-import { Favourites } from "./Buttons/Favourites";
+import { Login } from "./Buttons/Login";
+import ButtonContainer from "./Buttons/ButtonContainer";
+import { CartICon } from "./svg/Cart";
+import { Heart } from "./svg/Heart";
 export const Navbar = () => {
   return (
     <main className="bg-blue-600 h-16">
@@ -23,9 +25,14 @@ export const Navbar = () => {
           />
         </div>
         {/* right */}
-        <div className="flex gap-1">
-          <Cart />
-          <Favourites />
+        <div className="flex gap-3">
+          <ButtonContainer Svg={<CartICon />} number={4} title="Cart" />
+          <ButtonContainer
+            Svg={<Heart className="size-6" />}
+            number={4}
+            title="Wishlist"
+          />
+          <Login />
         </div>
       </div>
     </main>
