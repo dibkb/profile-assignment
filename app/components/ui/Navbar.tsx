@@ -6,9 +6,10 @@ import { Login } from "./Buttons/Login";
 import ButtonContainer from "./Buttons/ButtonContainer";
 import { CartICon } from "./svg/Cart";
 import { Heart } from "./svg/Heart";
+import { Constants } from "@/constants";
 export const Navbar = () => {
   return (
-    <main className="bg-blue-600 h-16">
+    <main className={`bg-blue-600 h-[${Constants.NavbarHeight}px]`}>
       <div className="container mx-auto flex items-center justify-between h-full">
         <img
           src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png"
