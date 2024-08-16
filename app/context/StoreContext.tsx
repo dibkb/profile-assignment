@@ -9,6 +9,7 @@ import React, {
   ReactNode,
   Dispatch,
   SetStateAction,
+  useEffect,
 } from "react";
 
 interface StoreContext {
@@ -29,6 +30,30 @@ export const StoreContextProvider: React.FC<{ children: ReactNode }> = ({
     rating: [],
     assured: false,
   });
+  useEffect(() => {
+    // filter category
+    let filteredProducts = productsData;
+    // Filter by category
+    if (filter.category.length > 0) {
+      if (!filter.category.includes("All")) {
+        filteredProducts = filteredProducts.filter((product) =>
+          filter.category.includes(product.category)
+        );
+      }
+    }
+    // Filter by rating
+    if (filter.rating.length > 0) {
+      filteredProducts = filteredProducts.filter((product) =>
+        filter.rating.some((rating) => product.rating >= rating)
+      );
+    }
+    // Filter by assured
+    if (filter.assured) {
+      filteredProducts = filteredProducts.filter((product) => product.assured);
+    }
+
+    setProducts(filteredProducts);
+  }, [filter]);
   return (
     <StoreContext.Provider value={{ products, setProducts, filter, setFilter }}>
       {children}
