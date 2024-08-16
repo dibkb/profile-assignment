@@ -1,6 +1,6 @@
 import { Constants } from "@/constants";
 import { Category } from "@/types/products";
-import { FilterMenu } from "./components/ui/FilterMenu";
+import { FilterMenu } from "./components/ui/Filter/FilterMenu";
 
 export default function Home() {
   return (
