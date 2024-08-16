@@ -51,7 +51,7 @@ export const ProductsDisplay = () => {
         {/* bigger screens */}
         <div className="hidden md:flex items-center h-full gap-2 px-4">
           <span>Sort by</span>
-          <ul className="flex gap-2">sortList</ul>
+          <ul className="flex gap-2">{sortList}</ul>
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-2">
