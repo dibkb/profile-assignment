@@ -2,6 +2,7 @@
 import React from "react";
 import { Categories } from "./Categories";
 import { CustomerRating } from "./CustomerRating";
+import { FlipkartAssured } from "./FlipkartAssured";
 
 export const FilterMenu = () => {
   return (
@@ -13,6 +14,8 @@ export const FilterMenu = () => {
       <Categories />
       {/* Customer rating */}
       <CustomerRating />
+      {/* Flipkart assured */}
+      <FlipkartAssured />
     </>
   );
 };

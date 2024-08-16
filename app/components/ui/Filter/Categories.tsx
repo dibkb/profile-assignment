@@ -23,7 +23,7 @@ export const Categories = () => {
   }
   return (
     <FilterSubmenu title="Categories">
-      <div className="flex flex-col gap-2 mt-4">
+      <div className="flex flex-col gap-2">
         {categories.map((ele, id) => {
           return (
             <span
@@ -38,7 +38,7 @@ export const Categories = () => {
                     : "hover:bg-blue-600 hover:border-blue-600"
                 }`}
               >
-                <Check className="text-white" />
+                {selectedCategories.has(id) && <Check className="text-white" />}
               </small>
               <p>{ele}</p>
             </span>
