@@ -1,7 +1,7 @@
 "use client";
 import { Coupons } from "@/constants";
 import { cn } from "@/utils";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CartItemLayout } from "./CartItemLayout";
 import { useStoreContext } from "@/app/context/StoreContext";
 import { products } from "@/data/products";
@@ -9,24 +9,41 @@ import { Coupon } from "@/types/products";
 
 export const PriceDetails = () => {
   const { cart } = useStoreContext();
-  const [couponStatus, setCouponStatus] = useState<"success" | "failure">();
-  const [appliedCoupon, setAppliedCoupon] = useState<string>();
+  const [couponStatus, setCouponStatus] = useState<
+    "success" | "failure" | undefined
+  >();
+  const [appliedCoupon, setAppliedCoupon] = useState<
+    AppliedCoupon | undefined
+  >();
   const [input, setInput] = useState("");
-  const [discountPrice, setDiscountPrice] = useState<number>();
+  const [discountPrice, setDiscountPrice] = useState<number>(0);
+
   function handleCouponSubmission() {
-    const findIndex = Coupons.findIndex((c) => c.code === input);
-    if (findIndex !== -1) {
+    const foundCoupon = Coupons.find((c) => c.code === input);
+    if (foundCoupon) {
       setCouponStatus("success");
-      const discount =
-        (calculateTotal(cart) * Coupons[findIndex].discount) / 100;
-      setDiscountPrice(discount);
+      setAppliedCoupon({
+        code: input,
+        discount: foundCoupon.discount,
+      });
     } else {
       setCouponStatus("failure");
-      setDiscountPrice(undefined);
+      setAppliedCoupon(undefined);
+      setDiscountPrice(0);
     }
-    setAppliedCoupon(input);
   }
+
+  useEffect(() => {
+    if (couponStatus === "success" && appliedCoupon?.discount) {
+      const discount = (appliedCoupon.discount / 100) * calculateTotal(cart);
+      setDiscountPrice(discount);
+    } else {
+      setDiscountPrice(0);
+    }
+  }, [cart, couponStatus, appliedCoupon]);
+
   const totalPrice = calculateTotal(cart);
+
   return (
     <CartItemLayout title="Price Details">
       <div className="p-4 flex flex-col gap-2">
@@ -36,11 +53,9 @@ export const PriceDetails = () => {
         </span>
         <span className="flex justify-between gap-2">
           <p>Discount</p>
-          {
-            <p className="font-semibold text-green-600">
-              ₹{discountPrice ? discountPrice : 0}
-            </p>
-          }
+          <p className="font-semibold text-green-600">
+            ₹{discountPrice.toFixed(2)}
+          </p>
         </span>
         <span className="flex justify-between gap-2">
           <p>Delivery Charges</p>
@@ -51,7 +66,7 @@ export const PriceDetails = () => {
       <span className="px-4 py-6 border-t border-b flex items-center justify-between">
         <p className="text-xl">Total Amount</p>
         <p className="font-bold text-xl">
-          ₹ {totalPrice - (discountPrice || 0)}
+          ₹ {(totalPrice - discountPrice).toFixed(2)}
         </p>
       </span>
       <span className="p-4 text-xs text-zinc-500 flex items-center gap-1">
@@ -60,16 +75,16 @@ export const PriceDetails = () => {
           alt="Safe and Secure"
           width={30}
         />
-        Safe and Secure Payments.Easy returns. 100% Authentic products.
+        Safe and Secure Payments. Easy returns. 100% Authentic products.
       </span>
       {/* coupon code */}
       <div className="p-4">
         <span className="h-5 flex text-xs font-semibold">
           {couponStatus === "success" && (
-            <p className="text-green-700">{`Coupon ${appliedCoupon} is applied`}</p>
+            <p className="text-green-700">{`Coupon ${appliedCoupon?.code} is applied`}</p>
           )}
           {couponStatus === "failure" && (
-            <p className="text-red-700">{`Coupon ${appliedCoupon} is not valid !`}</p>
+            <p className="text-red-700">{`Coupon ${input} is not valid!`}</p>
           )}
         </span>
         <span className="flex rounded-md">
@@ -85,14 +100,14 @@ export const PriceDetails = () => {
             onChange={(e) => setInput(e.target.value)}
           />
           <button
-            className=" p-2 px-4 bg-blue-600 text-white"
+            className="p-2 px-4 bg-blue-600 text-white"
             onClick={handleCouponSubmission}
           >
             Apply
           </button>
         </span>
         <span className="mt-4 text-xs text-zinc-400 font-semibold uppercase flex items-center gap-2">
-          Available coupons :{" "}
+          Available coupons:{" "}
           {Coupons.map((c) => (
             <p key={c.code}>{c.code}</p>
           ))}
@@ -101,6 +116,11 @@ export const PriceDetails = () => {
     </CartItemLayout>
   );
 };
+
+interface AppliedCoupon {
+  code: string;
+  discount: number;
+}
 
 function calculateTotal(cart: Map<string, number>): number {
   return products.reduce((total, prod) => {
