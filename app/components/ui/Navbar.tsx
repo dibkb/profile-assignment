@@ -9,7 +9,6 @@ import { Heart } from "./svg/Heart";
 import { Bars3 } from "./svg/Bars3";
 import { Xmark } from "./svg/Xmark";
 import { useStoreContext } from "@/app/context/StoreContext";
-import { Cart } from "@/types/products";
 export const Navbar = () => {
   const { cart, wishlist } = useStoreContext();
   const [navbarOpen, setNavbarOpen] = useState(false);
