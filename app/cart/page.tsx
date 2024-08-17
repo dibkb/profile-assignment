@@ -10,19 +10,22 @@ const Cart = () => {
     <div
       className={`bg-zinc-200 p-2 grid grid-cols-12 gap-2 min-h-[calc(100vh-64px)] grid-rows-[auto_1fr]`}
     >
-      {/* mobile screens */}
-      <div className="col-span-12">
+      {/* Left column on md screens */}
+      <div className="col-span-12 lg:col-span-8 lg:row-span-2 lg:order-1">
+        <div className="mb-2">
+          <CartDetails />
+        </div>
+        <div>
+          <WishlistCard />
+        </div>
+      </div>
+
+      {/* Right column on md screens */}
+      <div className="col-span-12 lg:col-span-4 lg:row-span-2 lg:order-2">
         <PriceDetails />
-      </div>
-      <div className="col-span-12">
-        {/* Cart details */}
-        <CartDetails />
-      </div>
-      <div className="col-span-12">
-        {/* Wishlist details */}
-        <WishlistCard />
       </div>
     </div>
   );
 };
+
 export default Cart;
