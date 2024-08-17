@@ -10,20 +10,21 @@ import { Coupon } from "@/types/products";
 export const PriceDetails = () => {
   const { cart } = useStoreContext();
   const [couponStatus, setCouponStatus] = useState<"success" | "failure">();
-  const [appliedCoupon, setAppliedCoupon] = useState<AppliedCoupon>();
+  const [appliedCoupon, setAppliedCoupon] = useState<string>();
   const [input, setInput] = useState("");
+  const [discountPrice, setDiscountPrice] = useState<number>();
   function handleCouponSubmission() {
     const findIndex = Coupons.findIndex((c) => c.code === input);
     if (findIndex !== -1) {
       setCouponStatus("success");
+      const discount =
+        (calculateTotal(cart) * Coupons[findIndex].discount) / 100;
+      setDiscountPrice(discount);
     } else {
       setCouponStatus("failure");
+      setDiscountPrice(undefined);
     }
-    setAppliedCoupon({
-      text: input,
-      discount: findIndex !== -1 ? Coupons[findIndex].discount : 0,
-    });
-    setInput("");
+    setAppliedCoupon(input);
   }
   const totalPrice = calculateTotal(cart);
   return (
@@ -35,7 +36,11 @@ export const PriceDetails = () => {
         </span>
         <span className="flex justify-between gap-2">
           <p>Discount</p>
-          <p className="font-semibold text-green-600">₹90</p>
+          {
+            <p className="font-semibold text-green-600">
+              ₹{discountPrice ? discountPrice : 0}
+            </p>
+          }
         </span>
         <span className="flex justify-between gap-2">
           <p>Delivery Charges</p>
@@ -45,7 +50,9 @@ export const PriceDetails = () => {
       {/* total amount */}
       <span className="px-4 py-6 border-t border-b flex items-center justify-between">
         <p className="text-xl">Total Amount</p>
-        <p className="font-bold text-xl">₹4510</p>
+        <p className="font-bold text-xl">
+          ₹ {totalPrice - (discountPrice || 0)}
+        </p>
       </span>
       <span className="p-4 text-xs text-zinc-500 flex items-center gap-1">
         <img
@@ -94,10 +101,7 @@ export const PriceDetails = () => {
     </CartItemLayout>
   );
 };
-interface AppliedCoupon {
-  text: string;
-  discount: number;
-}
+
 function calculateTotal(cart: Map<string, number>): number {
   return products.reduce((total, prod) => {
     const quantity = cart.get(prod.id);
