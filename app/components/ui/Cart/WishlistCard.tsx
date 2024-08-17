@@ -24,7 +24,13 @@ export const WishlistCard = () => {
   );
   return (
     <CartItemLayout title="Saved For Later">
-      <div className="p-4">{renderWishlist}</div>
+      {wishlistItems.length ? (
+        <div className="p-4">{renderWishlist}</div>
+      ) : (
+        <div className="p-4 flex items-center justify-center text-sm h-24">
+          Your wishlist is empty!
+        </div>
+      )}
     </CartItemLayout>
   );
 };
