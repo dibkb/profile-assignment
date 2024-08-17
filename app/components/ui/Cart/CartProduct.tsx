@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { ProductDetails } from "./ProductDetails";
 
 export const CartProduct = ({ id, ...rest }: CartItem) => {
-  const { cart, setCart } = useStoreContext();
+  const { cart, setCart, setWishlist } = useStoreContext();
   const inputButtonClass = `border w-8 h-8 flex items-center justify-center rounded-full bg-zinc-200 hover:bg-zinc-300`;
   const buttonClass =
     "uppercase font-medium text-zinc-500 px-4 hover:text-zinc-600";
@@ -40,6 +40,14 @@ export const CartProduct = ({ id, ...rest }: CartItem) => {
     });
   }
 
+  function removeAndAddtoWishlist() {
+    removeHandler();
+    setWishlist((prev) => {
+      const newSet = prev;
+      newSet.add(id);
+      return newSet;
+    });
+  }
   return (
     <main>
       <ProductDetails {...rest} id={id} />
@@ -66,7 +74,9 @@ export const CartProduct = ({ id, ...rest }: CartItem) => {
           </button>
         </div>
         <div>
-          <button className={buttonClass}>Save for later</button>
+          <button className={buttonClass} onClick={removeAndAddtoWishlist}>
+            Save for later
+          </button>
           <button className={buttonClass} onClick={removeHandler}>
             Remove
           </button>
