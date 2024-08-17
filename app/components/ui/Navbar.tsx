@@ -9,9 +9,12 @@ import { Heart } from "./svg/Heart";
 import { Bars3 } from "./svg/Bars3";
 import { Xmark } from "./svg/Xmark";
 import { useStoreContext } from "@/app/context/StoreContext";
+import { Cart } from "@/types/products";
 export const Navbar = () => {
   const { cart, wishlist } = useStoreContext();
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const cartTotal = calculateCartTotal(cart);
+  console.log(cart);
   return (
     <main className={`bg-blue-600 h-[64px]`}>
       <div className="w-[90%] sm:container mx-auto flex items-center justify-between gap-4 h-full">
@@ -48,7 +51,7 @@ export const Navbar = () => {
             <div className="flex gap-3 items-center">
               <ButtonContainer
                 Svg={<CartICon />}
-                number={cart.length}
+                number={cartTotal}
                 title="Cart"
               />
               <ButtonContainer
@@ -89,3 +92,11 @@ export const Navbar = () => {
     </main>
   );
 };
+
+function calculateCartTotal(cart: Cart[]): number {
+  let total = 0;
+  cart.forEach((c) => {
+    total += c.quantity;
+  });
+  return total;
+}
