@@ -1,7 +1,22 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import PageLayout from "../_layout";
+import { Coupons } from "@/constants";
+import { cn } from "@/utils";
 
 const Cart = () => {
+  const [couponStatus, setCouponStatus] = useState<"success" | "failure">();
+  const [input, setInput] = useState("");
+  function handleCouponSubmission() {
+    if (Coupons.includes(input)) {
+      setCouponStatus("success");
+    } else {
+      setCouponStatus("failure");
+    }
+    setInput("");
+  }
+  console.log(couponStatus);
   return (
     <PageLayout>
       {/* mobile screens */}
@@ -36,6 +51,35 @@ const Cart = () => {
           />
           Safe and Secure Payments.Easy returns. 100% Authentic products.
         </span>
+        {/* coupon code */}
+        <div className="p-4">
+          <p className="mb-2">Have a coupon code?</p>
+          <span className="flex rounded-md">
+            <input
+              type="text"
+              className={cn(
+                "border flex-grow px-4",
+                couponStatus === "success" && "bg-green-100 border-green-500",
+                couponStatus === "failure" && "bg-red-100 border-red-500"
+              )}
+              placeholder="Enter a coupon code"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
+            <button
+              className="border-t border-r border-b p-2 px-4"
+              onClick={handleCouponSubmission}
+            >
+              Apply
+            </button>
+          </span>
+          <span className="mt-4 text-xs text-zinc-600 font-semibold uppercase">
+            Available coupons :{" "}
+            {Coupons.map((c) => (
+              <p key={c}>{c}</p>
+            ))}
+          </span>
+        </div>
       </div>
     </PageLayout>
   );
