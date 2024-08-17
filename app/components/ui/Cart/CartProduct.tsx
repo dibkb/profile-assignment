@@ -3,8 +3,9 @@
 import { useStoreContext } from "@/app/context/StoreContext";
 import { CartItem } from "@/types/products";
 import React, { useEffect, useState } from "react";
+import { ProductDetails } from "./ProductDetails";
 
-export const CartProduct = ({ id, title, assured, price, image }: CartItem) => {
+export const CartProduct = ({ id, ...rest }: CartItem) => {
   const { cart, setCart } = useStoreContext();
   const inputButtonClass = `border w-8 h-8 flex items-center justify-center rounded-full bg-zinc-200 hover:bg-zinc-300`;
   const buttonClass =
@@ -41,28 +42,7 @@ export const CartProduct = ({ id, title, assured, price, image }: CartItem) => {
 
   return (
     <main>
-      <div className="flex gap-4 p-2">
-        <div
-          className="w-40 h-40"
-          style={{
-            backgroundImage: `url(${image})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        ></div>
-        <div className="text-sm flex flex-col gap-3">
-          <p>{title}</p>
-          {assured && (
-            <img
-              src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_62673a.png"
-              width={70}
-              alt="Assured"
-            />
-          )}
-          <p className="font-medium">₹{price}</p>
-        </div>
-      </div>
+      <ProductDetails {...rest} id={id} />
       <div className="flex gap-8 items-center">
         <div className="flex p-2 items-center gap-2">
           <button

@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import PageLayout from "../_layout";
+import React from "react";
 import { PriceDetails } from "../components/ui/Cart/PriceDetails";
 import { CartDetails } from "../components/ui/Cart/CartDetails";
+import { WishlistCard } from "../components/ui/Cart/WishlistCard";
 
 const Cart = () => {
   return (
@@ -17,6 +17,10 @@ const Cart = () => {
       <div className="col-span-12">
         {/* Cart details */}
         <CartDetails />
+      </div>
+      <div className="col-span-12">
+        {/* Wishlist details */}
+        <WishlistCard />
       </div>
     </div>
   );
