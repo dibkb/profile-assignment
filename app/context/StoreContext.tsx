@@ -1,6 +1,6 @@
 "use client";
 
-import { Filter, Product } from "@/types/products";
+import { Filter, Product, Sort } from "@/types/products";
 import { products as productsData } from "@/data/products";
 import React, {
   createContext,
@@ -15,8 +15,12 @@ import React, {
 interface StoreContext {
   products: Product[];
   setProducts: Dispatch<SetStateAction<Product[]>>;
+  finalProducts: Product[];
+  setFinalProducts: Dispatch<SetStateAction<Product[]>>;
   filter: Filter;
   setFilter: Dispatch<SetStateAction<Filter>>;
+  sort: keyof typeof Sort;
+  setSort: Dispatch<SetStateAction<keyof typeof Sort>>;
 }
 
 const StoreContext = createContext<StoreContext | undefined>(undefined);
@@ -25,6 +29,8 @@ export const StoreContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [products, setProducts] = useState<Product[]>(productsData);
+  const [finalProducts, setFinalProducts] = useState<Product[]>(products);
+  const [sort, setSort] = useState<keyof typeof Sort>("Relevance");
   const [filter, setFilter] = useState<Filter>({
     category: [],
     rating: [],
@@ -54,8 +60,39 @@ export const StoreContextProvider: React.FC<{ children: ReactNode }> = ({
 
     setProducts(filteredProducts);
   }, [filter]);
+  // sort
+  useEffect(() => {
+    let sortedProducts = [...products];
+    switch (sort) {
+      case "Price -- High to Low":
+        sortedProducts = sortedProducts.sort((a, b) => b.price - a.price);
+        break;
+      case "Price -- Low to High":
+        sortedProducts = sortedProducts.sort((a, b) => a.price - b.price);
+        break;
+      case "Rating":
+        sortedProducts = sortedProducts.sort((a, b) => b.rating - a.rating);
+        break;
+      case "Relevance":
+        sortedProducts = products;
+        break;
+    }
+
+    setFinalProducts(sortedProducts);
+  }, [sort, products]);
   return (
-    <StoreContext.Provider value={{ products, setProducts, filter, setFilter }}>
+    <StoreContext.Provider
+      value={{
+        products,
+        setProducts,
+        filter,
+        setFilter,
+        sort,
+        setSort,
+        finalProducts,
+        setFinalProducts,
+      }}
+    >
       {children}
     </StoreContext.Provider>
   );

@@ -5,8 +5,9 @@ import { Product } from "./Product";
 import { ArrowUpDown } from "../svg/ArrowUpDown";
 import { Filterby } from "../svg/Filterby";
 import { FilterMenu } from "../Filter/FilterMenu";
+import { Sort } from "@/types/products";
 
-const popularity = [
+const popularity: (keyof typeof Sort)[] = [
   "Relevance",
   "Rating",
   "Price -- High to Low",
@@ -14,15 +15,14 @@ const popularity = [
 ];
 
 export const ProductsDisplay = () => {
+  const { sort, setSort, finalProducts } = useStoreContext();
   const [showModal, setShowModal] = useState<"sort" | "filter">();
-  const [selected, setSelected] = useState<string>();
-  const { products } = useStoreContext();
   const sortList = popularity.map((ele) => (
     <li
-      onClick={() => setSelected(ele)}
+      onClick={() => setSort(ele)}
       key={ele}
       className={`cursor-pointer px-4 py-1 rounded-lg hover:bg-blue-100 hover:text-blue-600 ${
-        selected === ele && "bg-blue-100 text-blue-600"
+        sort === ele && "bg-blue-100 text-blue-600"
       }`}
     >
       {ele}
@@ -74,7 +74,7 @@ export const ProductsDisplay = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-2">
-        {products.map((prod) => (
+        {finalProducts.map((prod) => (
           <Product key={prod.id} {...prod} />
         ))}
       </div>

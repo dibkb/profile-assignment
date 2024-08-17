@@ -6,6 +6,12 @@ enum Category {
   "Mobile Phone" = "Mobile Phone",
   "Book" = "Book",
 }
+enum Sort {
+  "Relevance" = "Relevance",
+  "Rating" = "Rating",
+  "Price -- High to Low" = "Price -- High to Low",
+  "Price -- Low to High" = "Price -- Low to High",
+}
 interface Product {
   id: string;
   title: string;
@@ -20,4 +26,4 @@ interface Filter {
   rating: number[];
   assured: boolean;
 }
-export { type Product, Category, type Filter };
+export { type Product, Category, type Filter, Sort };
