@@ -2,14 +2,46 @@ import { type Product as ProductType } from "@/types/products";
 import React from "react";
 import { Heart } from "../svg/Heart";
 import { Star } from "../svg/Star";
+import { useStoreContext } from "@/app/context/StoreContext";
 
 export const Product = ({
+  id,
   title,
   image,
   price,
   rating,
   assured,
 }: ProductType) => {
+  const { setCart, setWishlist, wishlist } = useStoreContext();
+  function addToCartHandler(p_id: string) {
+    setCart((prev) => {
+      const match = prev.find((p) => p.id === p_id);
+      if (match) {
+        return prev.map((p) =>
+          p.id === p_id ? { ...p, quantity: p.quantity + 1 } : p
+        );
+      } else {
+        return [
+          ...prev,
+          {
+            id: p_id,
+            quantity: 1,
+          },
+        ];
+      }
+    });
+  }
+  function addToWishlistHandler(p_id: string) {
+    setWishlist((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(p_id)) {
+        newSet.delete(p_id);
+      } else {
+        newSet.add(p_id);
+      }
+      return newSet;
+    });
+  }
   return (
     <div className="p-2 rounded-md hover:bg-blue-50 group cursor-pointer flex flex-col gap-2">
       <div
@@ -21,8 +53,15 @@ export const Product = ({
           backgroundRepeat: "no-repeat",
         }}
       >
-        <button className="absolute bottom-2 right-2 group">
-          <Heart className="size-5 text-red-600 hover:fill-red-600 hover:animate-bounce" />
+        <button
+          className="absolute bottom-2 right-2 group"
+          onClick={() => addToWishlistHandler(id)}
+        >
+          {wishlist.has(id) ? (
+            <Heart className="size-5 text-red-600 fill-red-600" />
+          ) : (
+            <Heart className="size-5 text-red-600 hover:fill-red-600" />
+          )}
         </button>
       </div>
       {/* title */}
@@ -45,7 +84,10 @@ export const Product = ({
       {/* price */}
       <p className="text-xs font-medium">₹{price}</p>
       {/* add to cart */}
-      <button className="text-sm bg-blue-500 hover:bg-blue-600 transition-colors duration-400 rounded-lg py-2 text-white">
+      <button
+        className="text-sm bg-blue-500 hover:bg-blue-600 transition-colors duration-400 rounded-lg py-2 text-white"
+        onClick={() => addToCartHandler(id)}
+      >
         Add to Cart
       </button>
     </div>

@@ -8,7 +8,9 @@ import { CartICon } from "./svg/Cart";
 import { Heart } from "./svg/Heart";
 import { Bars3 } from "./svg/Bars3";
 import { Xmark } from "./svg/Xmark";
+import { useStoreContext } from "@/app/context/StoreContext";
 export const Navbar = () => {
+  const { cart, wishlist } = useStoreContext();
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
     <main className={`bg-blue-600 h-[64px]`}>
@@ -44,10 +46,14 @@ export const Navbar = () => {
             </div>
 
             <div className="flex gap-3 items-center">
-              <ButtonContainer Svg={<CartICon />} number={4} title="Cart" />
+              <ButtonContainer
+                Svg={<CartICon />}
+                number={cart.length}
+                title="Cart"
+              />
               <ButtonContainer
                 Svg={<Heart className="size-6" />}
-                number={4}
+                number={wishlist.size}
                 title="Wishlist"
               />
               <Login />

@@ -26,4 +26,8 @@ interface Filter {
   rating: number[];
   assured: boolean;
 }
-export { type Product, Category, type Filter, Sort };
+interface Cart {
+  id: string;
+  quantity: number;
+}
+export { type Product, Category, type Filter, Sort, type Cart };

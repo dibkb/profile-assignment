@@ -1,6 +1,6 @@
 "use client";
 
-import { Filter, Product, Sort } from "@/types/products";
+import { Cart, Filter, Product, Sort } from "@/types/products";
 import { products as productsData } from "@/data/products";
 import React, {
   createContext,
@@ -21,6 +21,10 @@ interface StoreContext {
   setFilter: Dispatch<SetStateAction<Filter>>;
   sort: keyof typeof Sort;
   setSort: Dispatch<SetStateAction<keyof typeof Sort>>;
+  cart: Cart[];
+  setCart: Dispatch<SetStateAction<Cart[]>>;
+  wishlist: Set<string>;
+  setWishlist: Dispatch<SetStateAction<Set<string>>>;
 }
 
 const StoreContext = createContext<StoreContext | undefined>(undefined);
@@ -30,6 +34,8 @@ export const StoreContextProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [products, setProducts] = useState<Product[]>(productsData);
   const [finalProducts, setFinalProducts] = useState<Product[]>(products);
+  const [cart, setCart] = useState<Cart[]>([]);
+  const [wishlist, setWishlist] = useState<Set<string>>(new Set());
   const [sort, setSort] = useState<keyof typeof Sort>("Relevance");
   const [filter, setFilter] = useState<Filter>({
     category: [],
@@ -91,6 +97,10 @@ export const StoreContextProvider: React.FC<{ children: ReactNode }> = ({
         setSort,
         finalProducts,
         setFinalProducts,
+        wishlist,
+        setWishlist,
+        cart,
+        setCart,
       }}
     >
       {children}
