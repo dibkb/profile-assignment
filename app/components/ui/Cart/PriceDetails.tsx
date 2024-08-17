@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { Coupons } from "@/constants";
 import { cn } from "@/utils";
@@ -28,7 +29,10 @@ export const PriceDetails = () => {
       });
     } else {
       setCouponStatus("failure");
-      setAppliedCoupon(undefined);
+      setAppliedCoupon({
+        code: input,
+        discount: 0,
+      });
       setDiscountPrice(0);
     }
   }
@@ -84,7 +88,7 @@ export const PriceDetails = () => {
             <p className="text-green-700">{`Coupon ${appliedCoupon?.code} is applied`}</p>
           )}
           {couponStatus === "failure" && (
-            <p className="text-red-700">{`Coupon ${input} is not valid!`}</p>
+            <p className="text-red-700">{`Coupon ${appliedCoupon?.code} is not valid!`}</p>
           )}
         </span>
         <span className="flex rounded-md">
