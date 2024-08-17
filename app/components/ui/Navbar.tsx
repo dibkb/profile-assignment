@@ -14,7 +14,6 @@ export const Navbar = () => {
   const { cart, wishlist } = useStoreContext();
   const [navbarOpen, setNavbarOpen] = useState(false);
   const cartTotal = calculateCartTotal(cart);
-  console.log(cart);
   return (
     <main className={`bg-blue-600 h-[64px]`}>
       <div className="w-[90%] sm:container mx-auto flex items-center justify-between gap-4 h-full">
@@ -101,10 +100,10 @@ export const Navbar = () => {
   );
 };
 
-function calculateCartTotal(cart: Cart[]): number {
+function calculateCartTotal(cart: Map<string, number>): number {
   let total = 0;
   cart.forEach((c) => {
-    total += c.quantity;
+    total += c;
   });
   return total;
 }

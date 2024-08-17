@@ -21,8 +21,8 @@ interface StoreContext {
   setFilter: Dispatch<SetStateAction<Filter>>;
   sort: keyof typeof Sort;
   setSort: Dispatch<SetStateAction<keyof typeof Sort>>;
-  cart: Cart[];
-  setCart: Dispatch<SetStateAction<Cart[]>>;
+  cart: Map<string, number>;
+  setCart: Dispatch<SetStateAction<Map<string, number>>>;
   wishlist: Set<string>;
   setWishlist: Dispatch<SetStateAction<Set<string>>>;
 }
@@ -34,7 +34,7 @@ export const StoreContextProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [products, setProducts] = useState<Product[]>(productsData);
   const [finalProducts, setFinalProducts] = useState<Product[]>(products);
-  const [cart, setCart] = useState<Cart[]>([]);
+  const [cart, setCart] = useState<Map<string, number>>(new Map());
   const [wishlist, setWishlist] = useState<Set<string>>(new Set());
   const [sort, setSort] = useState<keyof typeof Sort>("Relevance");
   const [filter, setFilter] = useState<Filter>({

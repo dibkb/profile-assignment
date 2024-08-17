@@ -15,20 +15,16 @@ export const Product = ({
   const { setCart, setWishlist, wishlist } = useStoreContext();
   function addToCartHandler(p_id: string) {
     setCart((prev) => {
-      const match = prev.find((p) => p.id === p_id);
-      if (match) {
-        return prev.map((p) =>
-          p.id === p_id ? { ...p, quantity: p.quantity + 1 } : p
-        );
+      const mpp = new Map(prev);
+      const val = mpp.get(p_id);
+      if (val) {
+        // incremennet
+        mpp.set(p_id, val + 1);
       } else {
-        return [
-          ...prev,
-          {
-            id: p_id,
-            quantity: 1,
-          },
-        ];
+        // add to cart
+        mpp.set(p_id, 1);
       }
+      return mpp;
     });
   }
   function addToWishlistHandler(p_id: string) {
