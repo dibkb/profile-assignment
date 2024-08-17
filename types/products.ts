@@ -33,4 +33,16 @@ interface Cart {
 interface CartItem extends Product {
   quantity: number;
 }
-export { type Product, Category, type Filter, Sort, type Cart, type CartItem };
+interface Coupon {
+  code: string;
+  discount: number;
+}
+export {
+  type Product,
+  Category,
+  type Filter,
+  Sort,
+  type Cart,
+  type CartItem,
+  type Coupon,
+};
