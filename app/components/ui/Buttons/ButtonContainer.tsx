@@ -1,5 +1,6 @@
 "use client";
 import { cn } from "@/utils";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 interface ButtonContainer {
@@ -7,6 +8,7 @@ interface ButtonContainer {
   title: string;
   Svg: React.ReactNode;
   className?: string;
+  link: string;
 }
 
 const ButtonContainer = ({
@@ -14,6 +16,7 @@ const ButtonContainer = ({
   number,
   Svg,
   className,
+  link,
 }: ButtonContainer) => {
   const [animate, setAnimate] = useState(false);
 
@@ -24,7 +27,8 @@ const ButtonContainer = ({
   }, [number]);
 
   return (
-    <div
+    <Link
+      href={link}
       className={cn(
         "flex flex-col items-center justify-center py-1 gap-1 text-xs text-white cursor-pointer rounded-md w-20 hover:bg-blue-500 relative",
         className
@@ -40,7 +44,7 @@ const ButtonContainer = ({
       </p>
       {Svg}
       <h2>{title}</h2>
-    </div>
+    </Link>
   );
 };
 

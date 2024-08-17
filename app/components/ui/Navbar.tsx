@@ -53,11 +53,13 @@ export const Navbar = () => {
                 Svg={<CartICon />}
                 number={cartTotal}
                 title="Cart"
+                link="cart"
               />
               <ButtonContainer
                 Svg={<Heart className="size-6" />}
                 number={wishlist.size}
                 title="Wishlist"
+                link="wishlist"
               />
               <Login />
             </div>
@@ -78,11 +80,17 @@ export const Navbar = () => {
             </div>
 
             <div className="flex flex-col mt-4 gap-3 items-center">
-              <ButtonContainer Svg={<CartICon />} number={4} title="Cart" />
+              <ButtonContainer
+                Svg={<CartICon />}
+                number={4}
+                title="Cart"
+                link="cart"
+              />
               <ButtonContainer
                 Svg={<Heart className="size-6" />}
                 number={4}
                 title="Wishlist"
+                link="wishlist"
               />
               <Login />
             </div>
