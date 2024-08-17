@@ -3,7 +3,8 @@ import React from "react";
 import { CartItemLayout } from "./CartItemLayout";
 import { useStoreContext } from "@/app/context/StoreContext";
 import { products } from "@/data/products";
-import { Product } from "@/types/products";
+import { CartItem } from "@/types/products";
+import { CartProduct } from "./CartProduct";
 
 export const CartDetails = () => {
   const { cart } = useStoreContext();
@@ -15,14 +16,7 @@ export const CartDetails = () => {
     return acc;
   }, []);
   const dispalyCartItem = cartItem.map((c) => {
-    return (
-      <main key={c.id}>
-        <div className="flex gap-2 p-2">
-          <img src={c.image} alt={c.title} width={150} />
-          <div></div>
-        </div>
-      </main>
-    );
+    return <CartProduct key={c.id} {...c} />;
   });
   return (
     <CartItemLayout title="Cart Details">
@@ -30,7 +24,3 @@ export const CartDetails = () => {
     </CartItemLayout>
   );
 };
-
-interface CartItem extends Product {
-  quantity: number;
-}

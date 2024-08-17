@@ -30,4 +30,7 @@ interface Cart {
   id: string;
   quantity: number;
 }
-export { type Product, Category, type Filter, Sort, type Cart };
+interface CartItem extends Product {
+  quantity: number;
+}
+export { type Product, Category, type Filter, Sort, type Cart, type CartItem };
