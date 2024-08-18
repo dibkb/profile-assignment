@@ -103,8 +103,12 @@ const Checkout: React.FC = () => {
           value={formData.state}
           onChange={handleInputChange}
           options={[
-            { value: "state1", label: "State 1" },
-            { value: "state2", label: "State 2" },
+            { value: "Auranachal Pradesh", label: "Auranachal Pradesh" },
+            { value: "Assam", label: "Assam" },
+            { value: "Andhra Pradesh", label: "Andhra Pradesh" },
+            { value: "Delhi", label: "Delhi" },
+            { value: "Madhya Pradesh", label: "Madhya Pradesh" },
+            { value: "Karnataka", label: "Karnataka" },
           ]}
         />
         <InputField
