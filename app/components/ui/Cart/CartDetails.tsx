@@ -6,6 +6,7 @@ import { useStoreContext } from "@/app/context/StoreContext";
 import { products } from "@/data/products";
 import { CartItem } from "@/types/products";
 import { CartProduct } from "./CartProduct";
+import Link from "next/link";
 
 export const CartDetails = () => {
   const { cart } = useStoreContext();
@@ -35,6 +36,16 @@ export const CartDetails = () => {
             Explore our wide selection and find something you like
           </p>
         </div>
+      )}
+      {cartItem.length ? (
+        <Link
+          href={"/checkout"}
+          className="ml-auto m-4 px-8 py-4 text-lg uppercase bg-amber-500 text-white font-semibold hover:bg-amber-600"
+        >
+          Place Order
+        </Link>
+      ) : (
+        ""
       )}
     </CartItemLayout>
   );
