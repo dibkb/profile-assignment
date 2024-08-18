@@ -133,7 +133,7 @@ const Checkout: React.FC = () => {
         <button
           type="submit"
           disabled={!isFormValid}
-          className={`w-full py-4 px-4 border border-transparent rounded-xl shadow-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-500 ${
+          className={`w-full py-4 px-4 border border-transparent rounded-xl shadow-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none ${
             !isFormValid ? "opacity-50 cursor-not-allowed" : ""
           }`}
         >

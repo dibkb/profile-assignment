@@ -14,6 +14,9 @@ export const Navbar = () => {
   const { cart, wishlist } = useStoreContext();
   const [navbarOpen, setNavbarOpen] = useState(false);
   const cartTotal = calculateCartTotal(cart);
+  function onClose() {
+    setNavbarOpen(false);
+  }
   return (
     <main className={`bg-blue-600 h-[64px]`}>
       <div className="w-[90%] sm:container mx-auto flex items-center justify-between gap-4 h-full">
@@ -56,12 +59,14 @@ export const Navbar = () => {
                 number={cartTotal}
                 title="Cart"
                 link="cart"
+                onClick={onClose}
               />
               <ButtonContainer
                 Svg={<Heart className="size-6" />}
                 number={wishlist.size}
                 title="Wishlist"
                 link="wishlist"
+                onClick={onClose}
               />
               {/* <Login /> */}
             </div>
@@ -87,12 +92,14 @@ export const Navbar = () => {
                 number={4}
                 title="Cart"
                 link="cart"
+                onClick={onClose}
               />
               <ButtonContainer
                 Svg={<Heart className="size-6" />}
                 number={4}
                 title="Wishlist"
                 link="wishlist"
+                onClick={onClose}
               />
               {/* <Login /> */}
             </div>

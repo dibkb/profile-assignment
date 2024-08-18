@@ -9,6 +9,7 @@ interface ButtonContainer {
   Svg: React.ReactNode;
   className?: string;
   link: string;
+  onClick: () => void;
 }
 
 const ButtonContainer = ({
@@ -17,6 +18,7 @@ const ButtonContainer = ({
   Svg,
   className,
   link,
+  onClick,
 }: ButtonContainer) => {
   const [animate, setAnimate] = useState(false);
 
@@ -33,6 +35,7 @@ const ButtonContainer = ({
         "flex flex-col items-center justify-center py-1 gap-1 text-xs text-white cursor-pointer rounded-md w-20 hover:bg-blue-500 relative",
         className
       )}
+      onClick={onClick}
     >
       <p
         className={cn(
