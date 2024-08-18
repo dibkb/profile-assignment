@@ -51,12 +51,14 @@ const Checkout: React.FC = () => {
 
   if (showSuccessMessage) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gray-100">
-        <div className="bg-white p-8 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-green-600 mb-4">
+      <div className="flex items-center justify-center h-[calc(100vh-64px)] bg-zinc-200">
+        <div className="bg-white p-8 rounded-xl shadow-md">
+          <h2 className="text-2xl font-semibold text-green-600 mb-4">
             Order successfully placed!
           </h2>
-          <p className="text-gray-600">Thank you for your purchase.</p>
+          <p className="text-gray-600 text-center">
+            Thank you for your purchase.
+          </p>
         </div>
       </div>
     );
