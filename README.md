@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Profile.fyi Assignment
+
+Brief description of your project.
 
 ## Getting Started
 
-First, run the development server:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/)
+- [pnpm](https://pnpm.io/)
+
+### Installing pnpm
+
+If you don't have pnpm installed, you can install it using npm:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install -g pnpm
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Clone the repository
+```
+git clone https://github.com/dibkb/profile-assignment.git
+cd profile-assignment
+```
+### Installing the dependencies
+```
+pnpm install
+```
+### Starting the development server
+```
+pnpm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Built With
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Next.js - The React framework used
+- TypeScript - For type-safe code.
+- Tailwind CSS - For styling.
+- React Context for State Management.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Product Management
+- Product listing with detailed information
+- Add to cart functionality
+- Add to wishlist functionality
+- Remove from cart
+- Remove from wishlist
+- Move item from cart to wishlist
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Filtering
+- Filter products by categories
+- Filter products by rating
+- Filter products by assured status
 
-## Deploy on Vercel
+### Sorting
+- Sort products by relevance
+- Sort products by price (low to high)
+- Sort products by price (high to low)
+- Sort products by rating
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Cart Management
+- Edit quantity of items in cart
+- Apply coupon codes for discounts
+- Invalid coupon code error handling
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### User Experience
+- Responsive design for various devices
+- Intuitive and user-friendly interface
