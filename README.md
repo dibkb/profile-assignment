@@ -33,6 +33,9 @@ pnpm install
 ```
 pnpm run dev
 ```
+<img width="1710" alt="Screenshot 2024-08-18 at 2 13 57 PM" src="https://github.com/user-attachments/assets/687a041b-008c-4ff6-aa59-46445fa6b19a">
+<img width="1710" alt="Screenshot 2024-08-18 at 2 16 44 PM" src="https://github.com/user-attachments/assets/8b1cb715-0af6-4656-931b-ed5684c81bf1">
+
 
 ### Built With
 
