@@ -17,6 +17,24 @@ export const Navbar = () => {
   function onClose() {
     setNavbarOpen(false);
   }
+  const ButtonGroup = (
+    <>
+      <ButtonContainer
+        Svg={<CartICon />}
+        number={cartTotal}
+        title="Cart"
+        link="cart"
+        onClick={onClose}
+      />
+      <ButtonContainer
+        Svg={<Heart className="size-6" />}
+        number={wishlist.size}
+        title="Wishlist"
+        link="wishlist"
+        onClick={onClose}
+      />
+    </>
+  );
   return (
     <main className={`bg-blue-600 h-[64px]`}>
       <div className="w-[90%] sm:container mx-auto flex items-center justify-between gap-4 h-full">
@@ -54,20 +72,7 @@ export const Navbar = () => {
             </div>
 
             <div className="flex gap-3 items-center">
-              <ButtonContainer
-                Svg={<CartICon />}
-                number={cartTotal}
-                title="Cart"
-                link="cart"
-                onClick={onClose}
-              />
-              <ButtonContainer
-                Svg={<Heart className="size-6" />}
-                number={wishlist.size}
-                title="Wishlist"
-                link="wishlist"
-                onClick={onClose}
-              />
+              {ButtonGroup}
               {/* <Login /> */}
             </div>
           </>
@@ -87,20 +92,7 @@ export const Navbar = () => {
             </div>
 
             <div className="flex flex-col mt-4 gap-3 items-center">
-              <ButtonContainer
-                Svg={<CartICon />}
-                number={4}
-                title="Cart"
-                link="cart"
-                onClick={onClose}
-              />
-              <ButtonContainer
-                Svg={<Heart className="size-6" />}
-                number={4}
-                title="Wishlist"
-                link="wishlist"
-                onClick={onClose}
-              />
+              {ButtonGroup}
               {/* <Login /> */}
             </div>
           </>
